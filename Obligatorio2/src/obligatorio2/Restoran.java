@@ -3,20 +3,28 @@ package obligatorio2;
 
 
 public class Restoran {
+    private int  id=0;
     private String nombre;
     private String direccion;
     private int apertura;
     private int cierre;
     private String comida;
     private int promedio;
+    private int idRestorant;
+
+    
 
     public Restoran(String nombre, String direccion, int apertura, int cierre, String comida) {
+        this.id++;
         this.nombre = nombre;
         this.direccion = direccion;
         this.apertura = apertura;
         this.cierre = cierre;
         this.comida = comida;
         this.promedio = 0;
+        this.setIdRestorant(id);
+        
+        
     }
 
     public Restoran() {
@@ -33,7 +41,13 @@ public class Restoran {
     public String getDireccion() {
         return direccion;
     }
+ public int getIdRestorant() {
+        return idRestorant;
+    }
 
+    public void setIdRestorant(int idRestorant) {
+        this.idRestorant = idRestorant;
+    }
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
@@ -70,7 +84,13 @@ public class Restoran {
         this.promedio = promedio;
     }
     
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId( int id) {
+        this.id = id;
+    }
     
     
 }
