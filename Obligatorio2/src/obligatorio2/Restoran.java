@@ -3,7 +3,7 @@ package obligatorio2;
 
 
 public class Restoran {
-    private int  id=0;
+    private int  id =0;
     private String nombre;
     private String direccion;
     private int apertura;
@@ -14,15 +14,15 @@ public class Restoran {
 
     
 
-    public Restoran(String nombre, String direccion, int apertura, int cierre, String comida) {
-        this.id++;
+    public Restoran(int idRestorant,String nombre, String direccion, int apertura, int cierre, String comida) {
+        this.idRestorant=idRestorant;
         this.nombre = nombre;
         this.direccion = direccion;
         this.apertura = apertura;
         this.cierre = cierre;
         this.comida = comida;
         this.promedio = 0;
-        this.setIdRestorant(id);
+        
         
         
     }

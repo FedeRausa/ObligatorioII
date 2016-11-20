@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package interfaz;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.table.DefaultTableModel;
 import obligatorio2.Restoran;
 import obligatorio2.*;
 
@@ -12,12 +15,32 @@ import obligatorio2.*;
  * @author FAMR
  */
 public class Principal extends javax.swing.JFrame {
-
+           String eID="";
+           String eNombre="";
+           String eDireccion="";
+           String eHoraApertura="";
+           String eHoraCierre="";
+           
+                  
+            
     private Obligatorio2 modelo;
     public Principal(Obligatorio2 unModelo) {
        this.modelo=unModelo;
       
         initComponents();
+        tablaRestorant.addMouseListener(new MouseAdapter(){
+            DefaultTableModel model= new DefaultTableModel();
+            public void mouseClicked(MouseEvent e){
+             int i = tablaRestorant.getSelectedRow();
+           eID= tablaRestorant.getValueAt(i, 0).toString();
+           eNombre=(tablaRestorant.getValueAt(i, 1).toString());
+           eDireccion=(tablaRestorant.getValueAt(i, 2).toString());
+           eHoraApertura=(tablaRestorant.getValueAt(i, 3).toString());
+           eHoraCierre=(tablaRestorant.getValueAt(i, 4).toString());
+          
+                  
+            }
+        });
     }
 
     /**
@@ -39,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaRestorant = new javax.swing.JTable();
         panelDatos = new javax.swing.JPanel();
@@ -47,7 +71,22 @@ public class Principal extends javax.swing.JFrame {
         comboComidas = new javax.swing.JComboBox<>();
         txtHoraCierre = new javax.swing.JTextField();
         txtNombreRestaurant = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
         btnRegistrarRestorant = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        txtEditarNombre = new javax.swing.JTextField();
+        txtEditarHoraApertura = new javax.swing.JTextField();
+        txtEditarHoraCierre = new javax.swing.JTextField();
+        txtEditarDireccion = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        lblID = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        comboComidasEditar = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -76,6 +115,8 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel5.setText("Tipo de Comidas");
 
+        jLabel6.setText("ID");
+
         javax.swing.GroupLayout panelTextosLayout = new javax.swing.GroupLayout(panelTextos);
         panelTextos.setLayout(panelTextosLayout);
         panelTextosLayout.setHorizontalGroup(
@@ -83,6 +124,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(panelTextosLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(panelTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
@@ -103,7 +145,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         tablaRestorant.setModel(new javax.swing.table.DefaultTableModel(
@@ -156,12 +200,13 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtNombreRestaurant, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                     .addComponent(txtDireccionRestorant, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtHoraApertura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                        .addComponent(txtHoraCierre, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(txtHoraApertura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(txtHoraCierre, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelDatosLayout.createSequentialGroup()
-                .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(217, Short.MAX_VALUE))
         );
         panelDatosLayout.setVerticalGroup(
@@ -176,7 +221,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(txtHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         btnRegistrarRestorant.setText("Registrar");
@@ -186,6 +233,109 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Guardar Cambios");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lblID.setText("ID");
+
+        jLabel7.setText("Nombre");
+
+        jLabel8.setText("Hora Apertura");
+
+        jLabel9.setText("Dirección");
+
+        jLabel10.setText("Hora Cierre");
+
+        comboComidasEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegetariano  ", "Macrobiótico", "De pescados y mariscos", "Carnes Rojas y Aves", "Todo tipo de comidas" }));
+        comboComidasEditar.setToolTipText("");
+        comboComidasEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboComidasEditarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEditarHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEditarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEditarHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtEditarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboComidasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblID)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblID)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEditarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtEditarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(comboComidasEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEditarHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEditarHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelFichaRestorantLayout = new javax.swing.GroupLayout(panelFichaRestorant);
         panelFichaRestorant.setLayout(panelFichaRestorantLayout);
         panelFichaRestorantLayout.setHorizontalGroup(
@@ -193,16 +343,23 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(panelFichaRestorantLayout.createSequentialGroup()
                 .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFichaRestorantLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(btnRegistrarRestorant)
+                        .addGap(70, 70, 70)
+                        .addComponent(btnEditar)
+                        .addGap(72, 72, 72)
+                        .addComponent(btnBorrar))
+                    .addGroup(panelFichaRestorantLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                             .addGroup(panelFichaRestorantLayout.createSequentialGroup()
                                 .addComponent(panelTextos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelFichaRestorantLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(btnRegistrarRestorant)))
+                                .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFichaRestorantLayout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(219, Short.MAX_VALUE))
         );
         panelFichaRestorantLayout.setVerticalGroup(
@@ -216,10 +373,15 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btnRegistrarRestorant)
+                .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarRestorant)
+                    .addComponent(btnBorrar)
+                    .addComponent(btnEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         jTabbedPane1.addTab("Ficha de Restorant", panelFichaRestorant);
@@ -232,7 +394,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 734, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab2", jPanel2);
@@ -245,7 +407,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 734, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab3", jPanel3);
@@ -279,20 +441,64 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreRestaurantActionPerformed
 
     private void btnRegistrarRestorantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarRestorantActionPerformed
-      Restoran restoran=new Restoran(txtNombreRestaurant.getText(),txtDireccionRestorant.getText(),Integer.parseInt(txtHoraApertura.getText()),Integer.parseInt(txtHoraCierre.getText()),comboComidas.getSelectedItem().toString());
+      Restoran restoran=new Restoran(Integer.parseInt(txtID.getText()),txtNombreRestaurant.getText(),txtDireccionRestorant.getText(),Integer.parseInt(txtHoraApertura.getText()),Integer.parseInt(txtHoraCierre.getText()),comboComidas.getSelectedItem().toString());
       modelo.agregarRestoran(restoran);
       mostrarMatriz();
+      txtID.setText("");
       txtNombreRestaurant.setText("");
       txtDireccionRestorant.setText("");
       txtHoraApertura.setText("");
       txtHoraCierre.setText("");
       
     }//GEN-LAST:event_btnRegistrarRestorantActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        for(int i=0;i <modelo.getListaRestoranes().size();i++){
+            if(eNombre == modelo.getListaRestoranes().get(i).getNombre()){
+               modelo.getListaRestoranes().remove(i);
+        }
+            
+        }
+        mostrarMatriz();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+     txtEditarNombre.setText(eNombre);
+     txtEditarDireccion.setText(eDireccion);
+     txtEditarHoraApertura.setText(eHoraApertura);
+     txtEditarHoraCierre.setText(eHoraCierre);
+     lblID.setText(eID);
+     
+     
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void comboComidasEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboComidasEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboComidasEditarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        for(int i=0;i <modelo.getListaRestoranes().size();i++){
+            if(Integer.parseInt(lblID.getText())== modelo.getListaRestoranes().get(i).getIdRestorant()){
+               modelo.getListaRestoranes().get(i).setNombre(txtEditarNombre.getText());
+               modelo.getListaRestoranes().get(i).setDireccion(txtEditarDireccion.getText());
+               modelo.getListaRestoranes().get(i).setApertura(Integer.parseInt(txtEditarHoraApertura.getText()));
+               modelo.getListaRestoranes().get(i).setCierre(Integer.parseInt(txtEditarHoraCierre.getText()));
+               modelo.getListaRestoranes().get(i).setComida(comboComidas.getSelectedItem().toString());
+               
+            }
+        }
+      lblID.setText("ID");
+      txtEditarNombre.setText("");
+      txtEditarDireccion.setText("");
+      txtEditarHoraApertura.setText("");
+      txtEditarHoraCierre.setText("");
+      mostrarMatriz();
+    }//GEN-LAST:event_jButton1ActionPerformed
 public void  mostrarMatriz()
 {
  String matriz[][]= new String[modelo.getListaRestoranes().size()][6];
 for(int i=0;i <modelo.getListaRestoranes().size();i++){
-    matriz[i][0]=String.valueOf(modelo.getListaRestoranes().get(i).getId());
+    matriz[i][0]=String.valueOf(modelo.getListaRestoranes().get(i).getIdRestorant());
     matriz[i][1]=modelo.getListaRestoranes().get(i).getNombre();
     matriz[i][2]=modelo.getListaRestoranes().get(i).getDireccion();
     matriz[i][3]=String.valueOf(modelo.getListaRestoranes().get(i).getApertura());
@@ -302,7 +508,7 @@ for(int i=0;i <modelo.getListaRestoranes().size();i++){
  tablaRestorant.setModel(new javax.swing.table.DefaultTableModel(
             matriz,
             new String [] {
-                "Número", "Nombre", "Dirección", "Hora Apertura", "Hora Cierre", "Tipo Comida"
+                "ID", "Nombre", "Dirección", "Hora Apertura", "Hora Cierre", "Tipo Comida"
             }
         )) ;
 }
@@ -342,26 +548,42 @@ for(int i=0;i <modelo.getListaRestoranes().size();i++){
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnRegistrarRestorant;
     private javax.swing.JComboBox<String> comboComidas;
+    private javax.swing.JComboBox<String> comboComidasEditar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblID;
     private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelFichaRestorant;
     private javax.swing.JPanel panelTextos;
     private javax.swing.JTable tablaRestorant;
     private javax.swing.JTextField txtDireccionRestorant;
+    private javax.swing.JTextField txtEditarDireccion;
+    private javax.swing.JTextField txtEditarHoraApertura;
+    private javax.swing.JTextField txtEditarHoraCierre;
+    private javax.swing.JTextField txtEditarNombre;
     private javax.swing.JTextField txtHoraApertura;
     private javax.swing.JTextField txtHoraCierre;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombreRestaurant;
     // End of variables declaration//GEN-END:variables
 }
