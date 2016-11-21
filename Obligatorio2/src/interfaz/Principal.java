@@ -121,8 +121,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelFichaRestorant.setBackground(new java.awt.Color(0, 0, 0));
-
         jLabel1.setText("Nombre");
 
         jLabel2.setText("Dirección");
