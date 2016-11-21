@@ -2,20 +2,20 @@
 package Dominio;
 
 
-public class Restoran {
-    private int  id =0;
+public class Restoran extends Sistema{
+    
     private String nombre;
     private String direccion;
     private int apertura;
     private int cierre;
     private String comida;
     private int promedio;
-    private int idRestorant;
+    private int id;
 
     
 
     public Restoran(int idRestorant,String nombre, String direccion, int apertura, int cierre, String comida) {
-        this.idRestorant=idRestorant;
+        this.id = modificarIdRestoran();
         this.nombre = nombre;
         this.direccion = direccion;
         this.apertura = apertura;
@@ -42,11 +42,11 @@ public class Restoran {
         return direccion;
     }
  public int getIdRestorant() {
-        return idRestorant;
+        return id;
     }
 
     public void setIdRestorant(int idRestorant) {
-        this.idRestorant = idRestorant;
+        this.id = idRestorant;
     }
     public void setDireccion(String direccion) {
         this.direccion = direccion;
