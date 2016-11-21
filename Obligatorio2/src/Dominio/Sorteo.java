@@ -11,3 +11,5 @@ public class Sorteo {
     private String texto;
     private ArrayList<Cliente> listaGanadores;
 }
+
+

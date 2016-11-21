@@ -6,6 +6,7 @@ public class Cliente {
     private int edad;
     private String mail;
 
+    //**Constructore**//
     public Cliente(String nombre, int edad, String mail) {
         this.nombre = nombre;
         this.edad = edad;
@@ -14,6 +15,8 @@ public class Cliente {
 
     public Cliente() {
     }
+    
+    //Geters y seters**//
 
     public String getNombre() {
         return nombre;

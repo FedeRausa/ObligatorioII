@@ -7,15 +7,18 @@ public class Evaluacion {
     private String reseña;
     private Cliente usuario;
 
+    //**Constructores**//
+    
     public Evaluacion(int estrellas, String reseña, Cliente usuario) {
         this.estrellas = estrellas;
         this.reseña = reseña;
         this.usuario = usuario;
     }
-
+    
     public Evaluacion() {
     }
-
+    
+    //**Geters y seters**//
     public int getEstrellas() {
         return estrellas;
     }
