@@ -1,13 +1,13 @@
 
-package obligatorio2;
+package Dominio;
 
 
 public class FichaDeRestoran {
    private Evaluacion eval;
-   private Usuario usu;
+   private Cliente usu;
    private Restoran Resto;
 
-    public FichaDeRestoran(Evaluacion eval, Usuario usu, Restoran Resto) {
+    public FichaDeRestoran(Evaluacion eval, Cliente usu, Restoran Resto) {
         this.eval = eval;
         this.usu = usu;
         this.Resto = Resto;
@@ -24,11 +24,11 @@ public class FichaDeRestoran {
         this.eval = eval;
     }
 
-    public Usuario getUsu() {
+    public Cliente getUsu() {
         return usu;
     }
 
-    public void setUsu(Usuario usu) {
+    public void setUsu(Cliente usu) {
         this.usu = usu;
     }
 

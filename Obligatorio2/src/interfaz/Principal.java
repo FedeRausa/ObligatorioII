@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfaz;
+import Dominio.Sistema;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -11,8 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import obligatorio2.Restoran;
-import obligatorio2.*;
+import Dominio.Restoran;
 
 /**
  *
@@ -30,8 +30,8 @@ public class Principal extends javax.swing.JFrame {
            
                   
             
-    private Obligatorio2 modelo;
-    public Principal(Obligatorio2 unModelo) {
+    private Sistema modelo;
+    public Principal(Sistema unModelo) {
        this.modelo=unModelo;
       this.setSize(500,500);
    

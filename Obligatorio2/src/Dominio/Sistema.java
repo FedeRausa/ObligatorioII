@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package obligatorio2;
+package Dominio;
 
 import interfaz.Principal;
 import java.util.ArrayList;
@@ -13,16 +13,16 @@ import javax.swing.JOptionPane;
  *
  * @author Federico
  */
-public class Obligatorio2 {
+public class Sistema {
     
     private ArrayList<Evaluacion> listaFichas;
-    private ArrayList<Usuario> listaUsuarios;
-    private ArrayList<Usuario> listaUsuariosConFicha;
+    private ArrayList<Cliente> listaUsuarios;
+    private ArrayList<Cliente> listaUsuariosConFicha;
     private ArrayList<Sorteo> listaSorteos;
     private ArrayList<Restoran> listaRestoranes;
     private ArrayList<Evaluacion> listaEvaluaciones;
     private ArrayList<String> listaComidas;
-   public Obligatorio2(){
+   public Sistema(){
        listaRestoranes = new ArrayList<Restoran>();
    }
    
@@ -42,19 +42,19 @@ public class Obligatorio2 {
         this.listaFichas = listaFichas;
     }
 
-    public ArrayList<Usuario> getListaUsuarios() {
+    public ArrayList<Cliente> getListaUsuarios() {
         return listaUsuarios;
     }
 
-    public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
+    public void setListaUsuarios(ArrayList<Cliente> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
 
-    public ArrayList<Usuario> getListaUsuariosConFicha() {
+    public ArrayList<Cliente> getListaUsuariosConFicha() {
         return listaUsuariosConFicha;
     }
 
-    public void setListaUsuariosConFicha(ArrayList<Usuario> listaUsuariosConFicha) {
+    public void setListaUsuariosConFicha(ArrayList<Cliente> listaUsuariosConFicha) {
         this.listaUsuariosConFicha = listaUsuariosConFicha;
     }
 
@@ -94,7 +94,7 @@ public class Obligatorio2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Obligatorio2 sistema=new Obligatorio2();
+        Sistema sistema=new Sistema();
       Principal vista= new Principal(sistema);
        vista.setVisible(true);
         
