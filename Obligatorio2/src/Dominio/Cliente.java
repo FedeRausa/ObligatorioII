@@ -1,18 +1,18 @@
 
-package obligatorio2;
+package Dominio;
 
-public class Usuario {
+public class Cliente {
     private String nombre;
     private int edad;
     private String mail;
 
-    public Usuario(String nombre, int edad, String mail) {
+    public Cliente(String nombre, int edad, String mail) {
         this.nombre = nombre;
         this.edad = edad;
         this.mail = mail;
     }
 
-    public Usuario() {
+    public Cliente() {
     }
 
     public String getNombre() {

@@ -1,13 +1,13 @@
 
-package obligatorio2;
+package Dominio;
 
 
 public class Evaluacion {
     private int estrellas;
     private String reseña;
-    private Usuario usuario;
+    private Cliente usuario;
 
-    public Evaluacion(int estrellas, String reseña, Usuario usuario) {
+    public Evaluacion(int estrellas, String reseña, Cliente usuario) {
         this.estrellas = estrellas;
         this.reseña = reseña;
         this.usuario = usuario;
@@ -32,11 +32,11 @@ public class Evaluacion {
         this.reseña = reseña;
     }
 
-    public Usuario getUsuario() {
+    public Cliente getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Cliente usuario) {
         this.usuario = usuario;
     }
     

@@ -1,5 +1,5 @@
 
-package obligatorio2;
+package Dominio;
 
 
 public class Restoran {

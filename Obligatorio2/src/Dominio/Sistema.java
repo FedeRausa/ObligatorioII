@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package obligatorio2;
+package Dominio;
 
 import interfaz.Principal;
 import java.util.ArrayList;
@@ -13,49 +13,50 @@ import javax.swing.JOptionPane;
  *
  * @author Federico
  */
-public class Obligatorio2 {
+public class Sistema {
     
-    private ArrayList<Evaluacion> listaFichas;
-    private ArrayList<Usuario> listaUsuarios;
-    private ArrayList<Usuario> listaUsuariosConFicha;
+   
+    private ArrayList<Cliente> listaClientes;
     private ArrayList<Sorteo> listaSorteos;
     private ArrayList<Restoran> listaRestoranes;
     private ArrayList<Evaluacion> listaEvaluaciones;
-    private ArrayList<String> listaComidas;
-   public Obligatorio2(){
-       listaRestoranes = new ArrayList<Restoran>();
+     
+   public Sistema(){
+    listaRestoranes = new ArrayList<Restoran>();
+      listaClientes = new ArrayList<Cliente>();
+      listaEvaluaciones = new ArrayList<Evaluacion>();
+      listaSorteos = new ArrayList<Sorteo>();
+     
    }
+
+  
+  
+ //** Metodos para agregar a las listas**//
    
    public void agregarRestoran(Restoran res){ 
-       res.setId(res.getId());
+       this.getListaRestoranes().add(res);
+   }
+
+   public void agregarCliente(Cliente cli){ 
+       this.getListaClientes().add(cli);
+   }
    
-   this.getListaRestoranes().add(res);
-       
+   public void agregarSorteo(Sorteo s){ 
+       this.getListaSorteos().add(s);
+   }
    
-}
+   public void agregarEvaluacion(Evaluacion eva){ 
+       this.getListaEvaluaciones().add(eva);
+   }
+   
+   
 
-    public ArrayList<Evaluacion> getListaFichas() {
-        return listaFichas;
+    public ArrayList<Cliente> getListaClientes() {
+        return listaClientes;
     }
 
-    public void setListaFichas(ArrayList<Evaluacion> listaFichas) {
-        this.listaFichas = listaFichas;
-    }
-
-    public ArrayList<Usuario> getListaUsuarios() {
-        return listaUsuarios;
-    }
-
-    public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
-
-    public ArrayList<Usuario> getListaUsuariosConFicha() {
-        return listaUsuariosConFicha;
-    }
-
-    public void setListaUsuariosConFicha(ArrayList<Usuario> listaUsuariosConFicha) {
-        this.listaUsuariosConFicha = listaUsuariosConFicha;
+    public void setListaClientes(ArrayList<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
     public ArrayList<Sorteo> getListaSorteos() {
@@ -82,19 +83,15 @@ public class Obligatorio2 {
         this.listaEvaluaciones = listaEvaluaciones;
     }
 
-    public ArrayList<String> getListaComidas() {
-        return listaComidas;
-    }
-
-    public void setListaComidas(ArrayList<String> listaComidas) {
-        this.listaComidas = listaComidas;
-    }
+    
+   
+  
    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Obligatorio2 sistema=new Obligatorio2();
+        Sistema sistema=new Sistema();
       Principal vista= new Principal(sistema);
        vista.setVisible(true);
         

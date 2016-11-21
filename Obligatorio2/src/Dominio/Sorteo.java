@@ -1,5 +1,5 @@
 
-package obligatorio2;
+package Dominio;
 
 import java.util.*;
 
@@ -9,5 +9,5 @@ public class Sorteo {
     private int cantGanadores;
     private int fecha;
     private String texto;
-    private ArrayList<Usuario> listaGanadores;
+    private ArrayList<Cliente> listaGanadores;
 }

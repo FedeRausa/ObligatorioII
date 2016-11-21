@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfaz;
+import Dominio.Sistema;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -11,8 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import obligatorio2.Restoran;
-import obligatorio2.*;
+import Dominio.Restoran;
 
 /**
  *
@@ -30,8 +30,8 @@ public class Principal extends javax.swing.JFrame {
            
                   
             
-    private Obligatorio2 modelo;
-    public Principal(Obligatorio2 unModelo) {
+    private Sistema modelo;
+    public Principal(Sistema unModelo) {
        this.modelo=unModelo;
       this.setSize(500,500);
    
@@ -121,6 +121,10 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panelFichaRestorant.setBackground(new java.awt.Color(0, 0, 51));
+
+        panelTextos.setBackground(new java.awt.Color(0, 0, 51));
+
         jLabel1.setText("Nombre");
 
         jLabel2.setText("Dirección");
@@ -191,6 +195,8 @@ public class Principal extends javax.swing.JFrame {
         tablaRestorant.setRowHeight(30);
         jScrollPane2.setViewportView(tablaRestorant);
 
+        panelDatos.setBackground(new java.awt.Color(0, 0, 51));
+
         txtDireccionRestorant.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDireccionRestorantKeyTyped(evt);
@@ -256,9 +262,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtDireccionRestorant, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(txtNombreRestaurant, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtHoraCierre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                        .addComponent(txtHoraApertura, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(txtHoraCierre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(txtHoraApertura, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
                 .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -309,6 +314,8 @@ public class Principal extends javax.swing.JFrame {
                 btnEditarActionPerformed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         txtEditarNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
