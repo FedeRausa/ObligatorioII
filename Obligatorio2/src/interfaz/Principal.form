@@ -272,10 +272,8 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="txtDireccionRestorant" alignment="0" pref="160" max="32767" attributes="0"/>
                               <Component id="txtNombreRestaurant" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtHoraCierre" alignment="0" pref="40" max="32767" attributes="0"/>
-                                  <Component id="txtHoraApertura" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="txtHoraCierre" alignment="0" pref="40" max="32767" attributes="0"/>
+                              <Component id="txtHoraApertura" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblNombre" min="-2" pref="38" max="-2" attributes="0"/>
