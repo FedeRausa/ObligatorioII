@@ -7,6 +7,7 @@ package obligatorio2;
 
 import interfaz.Principal;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +30,7 @@ public class Obligatorio2 {
        res.setId(res.getId());
    
    this.getListaRestoranes().add(res);
+       
    
 }
 
