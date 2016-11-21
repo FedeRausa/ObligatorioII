@@ -15,47 +15,51 @@ import javax.swing.JOptionPane;
  */
 public class Sistema {
     
-    private ArrayList<Evaluacion> listaFichas;
-    private ArrayList<Cliente> listaUsuarios;
-    private ArrayList<Cliente> listaUsuariosConFicha;
+    //private ArrayList<Evaluacion> listaFichas;
+    private ArrayList<Cliente> listaClientes;
     private ArrayList<Sorteo> listaSorteos;
     private ArrayList<Restoran> listaRestoranes;
     private ArrayList<Evaluacion> listaEvaluaciones;
     private ArrayList<String> listaComidas;
-   public Sistema(){
+    private int idRestoran;
+   
+    //***Constructor**//
+    
+    public Sistema(){
        listaRestoranes = new ArrayList<Restoran>();
-   }
+       listaComidas = new ArrayList<String>();
+       listaClientes = new ArrayList<Cliente>();
+       listaEvaluaciones = new ArrayList<Evaluacion>();
+       listaSorteos = new ArrayList<Sorteo>();
+       idRestoran = 0;
+    }
+    
+   //** Metodos para agregar a las listas**//
+    
+    public void agregarRestoran(Restoran res){ 
+        this.getListaRestoranes().add(res);
+    }
+    
+    public void agregarCliente(Cliente cli){ 
+        this.getListaClientes().add(cli);
+    }
+    
+    public void agregarSorteo(Sorteo s){ 
+        this.getListaSorteos().add(s);
+    }
+    
+    public void agregarEvaluacion(Evaluacion eva){ 
+        this.getListaEvaluaciones().add(eva);
+    }
    
-   public void agregarRestoran(Restoran res){ 
-       res.setId(res.getId());
-   
-   this.getListaRestoranes().add(res);
-       
-   
-}
-
-    public ArrayList<Evaluacion> getListaFichas() {
-        return listaFichas;
+    //**Geters y seters**//
+    
+    public ArrayList<Cliente> getListaClientes() {
+        return listaClientes;
     }
 
-    public void setListaFichas(ArrayList<Evaluacion> listaFichas) {
-        this.listaFichas = listaFichas;
-    }
-
-    public ArrayList<Cliente> getListaUsuarios() {
-        return listaUsuarios;
-    }
-
-    public void setListaUsuarios(ArrayList<Cliente> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
-
-    public ArrayList<Cliente> getListaUsuariosConFicha() {
-        return listaUsuariosConFicha;
-    }
-
-    public void setListaUsuariosConFicha(ArrayList<Cliente> listaUsuariosConFicha) {
-        this.listaUsuariosConFicha = listaUsuariosConFicha;
+    public void setListaClientes(ArrayList<Cliente> listaUsuarios) {
+        this.listaClientes = listaClientes;
     }
 
     public ArrayList<Sorteo> getListaSorteos() {
@@ -90,9 +94,15 @@ public class Sistema {
         this.listaComidas = listaComidas;
     }
    
-    /**
-     * @param args the command line arguments
-     */
+    //**Metodos utiles manejo de aplicacion**//
+    
+    public int modificarIdRestoran(){
+        this.idRestoran++;
+        return idRestoran;
+    }
+    
+    
+    //**Main**//
     public static void main(String[] args) {
         Sistema sistema=new Sistema();
       Principal vista= new Principal(sistema);
