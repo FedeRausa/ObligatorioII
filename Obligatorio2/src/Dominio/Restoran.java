@@ -3,7 +3,7 @@ package Dominio;
 
 
 public class Restoran {
-    private int  id =0;
+   
     private String nombre;
     private String direccion;
     private int apertura;
@@ -84,13 +84,7 @@ public class Restoran {
         this.promedio = promedio;
     }
     
-    public int getId() {
-        return id;
-    }
-
-    public void setId( int id) {
-        this.id = id;
-    }
+   
     
     
 }

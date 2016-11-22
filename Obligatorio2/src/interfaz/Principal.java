@@ -19,8 +19,8 @@ import Dominio.Restoran;
  * @author FAMR
  */
 public class Principal extends javax.swing.JFrame {
-    ImageIcon check= new ImageIcon(getClass().getResource("/interfaz/Imagenes/checkmark.png"));
-    ImageIcon noCheck= new ImageIcon(getClass().getResource("/interfaz/Imagenes/noCheck.png"));
+    ImageIcon check= new ImageIcon(getClass().getResource("/interfaz/Imagenes/edit.png"));
+    ImageIcon noCheck= new ImageIcon(getClass().getResource("/interfaz/Imagenes/del.png"));
     ImageIcon fondo= new ImageIcon(getClass().getResource("/interfaz/Imagenes/fondo.jpg"));
            String eID="";
            String eNombre="";
@@ -70,13 +70,6 @@ public class Principal extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelFichaRestorant = new javax.swing.JPanel();
-        panelTextos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaRestorant = new javax.swing.JTable();
         panelDatos = new javax.swing.JPanel();
@@ -87,6 +80,16 @@ public class Principal extends javax.swing.JFrame {
         txtNombreRestaurant = new javax.swing.JTextField();
         txtID = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
+        lblNombre1 = new javax.swing.JLabel();
+        lblNombre2 = new javax.swing.JLabel();
+        lblNombre3 = new javax.swing.JLabel();
+        lblNombre4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         btnRegistrarRestorant = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -121,58 +124,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelFichaRestorant.setBackground(new java.awt.Color(0, 0, 51));
-
-        panelTextos.setBackground(new java.awt.Color(0, 0, 51));
-
-        jLabel1.setText("Nombre");
-
-        jLabel2.setText("Dirección");
-
-        jLabel3.setText("Hora Apertura");
-
-        jLabel4.setText("Hora Cierre");
-
-        jLabel5.setText("Tipo de Comidas");
-
-        jLabel6.setText("ID");
-
-        javax.swing.GroupLayout panelTextosLayout = new javax.swing.GroupLayout(panelTextos);
-        panelTextos.setLayout(panelTextosLayout);
-        panelTextosLayout.setHorizontalGroup(
-            panelTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTextosLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(panelTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTextosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
-        panelTextosLayout.setVerticalGroup(
-            panelTextosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTextosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(13, 13, 13)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel6)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
         tablaRestorant.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -195,14 +146,22 @@ public class Principal extends javax.swing.JFrame {
         tablaRestorant.setRowHeight(30);
         jScrollPane2.setViewportView(tablaRestorant);
 
-        panelDatos.setBackground(new java.awt.Color(0, 0, 51));
-
+        txtDireccionRestorant.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDireccionRestorantFocusLost(evt);
+            }
+        });
         txtDireccionRestorant.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDireccionRestorantKeyTyped(evt);
             }
         });
 
+        txtHoraApertura.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoraAperturaFocusLost(evt);
+            }
+        });
         txtHoraApertura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraAperturaActionPerformed(evt);
@@ -222,6 +181,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txtHoraCierre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoraCierreFocusLost(evt);
+            }
+        });
         txtHoraCierre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtHoraCierreKeyTyped(evt);
@@ -244,6 +208,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txtID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIDFocusLost(evt);
+            }
+        });
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtIDKeyTyped(evt);
@@ -254,44 +223,137 @@ public class Principal extends javax.swing.JFrame {
         lblNombre.setMinimumSize(new java.awt.Dimension(30, 30));
         lblNombre.setPreferredSize(new java.awt.Dimension(30, 30));
 
+        lblNombre1.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblNombre1.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblNombre1.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblNombre1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lblNombre1FocusLost(evt);
+            }
+        });
+
+        lblNombre2.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblNombre2.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblNombre2.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblNombre2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lblNombre2FocusLost(evt);
+            }
+        });
+
+        lblNombre3.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblNombre3.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblNombre3.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblNombre3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lblNombre3FocusLost(evt);
+            }
+        });
+
+        lblNombre4.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblNombre4.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblNombre4.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblNombre4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lblNombre4FocusLost(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre");
+
+        jLabel2.setText("Dirección");
+
+        jLabel3.setText("Hora Apertura");
+
+        jLabel4.setText("Hora Cierre");
+
+        jLabel6.setText("ID");
+
+        jLabel5.setText("Tipo de Comidas");
+
         javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
         panelDatos.setLayout(panelDatosLayout);
         panelDatosLayout.setHorizontalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosLayout.createSequentialGroup()
-                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtDireccionRestorant, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(txtNombreRestaurant, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtHoraCierre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(txtHoraApertura, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(18, 18, 18)
-                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(202, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(48, 48, 48)
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addComponent(txtHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addComponent(txtHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addComponent(txtDireccionRestorant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addComponent(txtNombreRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDatosLayout.setVerticalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelDatosLayout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
                         .addComponent(txtNombreRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addComponent(txtDireccionRestorant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtDireccionRestorant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel3))
+                            .addComponent(lblNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHoraCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(lblNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)
+                                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(comboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(txtHoraApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         btnRegistrarRestorant.setText("Registrar");
@@ -314,8 +376,6 @@ public class Principal extends javax.swing.JFrame {
                 btnEditarActionPerformed(evt);
             }
         });
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         txtEditarNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -441,10 +501,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelFichaRestorantLayout.createSequentialGroup()
-                        .addComponent(panelTextos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(7, 7, 7)
+                        .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelFichaRestorantLayout.createSequentialGroup()
                                 .addComponent(btnRegistrarRestorant)
                                 .addGap(46, 46, 46)
@@ -452,19 +513,15 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(48, 48, 48)
                                 .addComponent(btnBorrar)
                                 .addGap(56, 56, 56)
-                                .addComponent(btnSalir))
-                            .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnSalir)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelFichaRestorantLayout.setVerticalGroup(
             panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFichaRestorantLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelTextos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
+                .addComponent(panelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFichaRestorantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarRestorant)
                     .addComponent(btnBorrar)
@@ -474,7 +531,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ficha de Restorant", panelFichaRestorant);
@@ -703,7 +760,60 @@ public class Principal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtNombreRestaurantFocusLost
-public void  mostrarMatriz()
+
+    private void lblNombre1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblNombre1FocusLost
+      
+    }//GEN-LAST:event_lblNombre1FocusLost
+
+    private void lblNombre2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblNombre2FocusLost
+        
+    }//GEN-LAST:event_lblNombre2FocusLost
+
+    private void lblNombre3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblNombre3FocusLost
+      
+    }//GEN-LAST:event_lblNombre3FocusLost
+
+    private void lblNombre4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblNombre4FocusLost
+       
+    }//GEN-LAST:event_lblNombre4FocusLost
+
+    private void txtDireccionRestorantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionRestorantFocusLost
+        if(!txtDireccionRestorant.getText().equals("")){
+            lblNombre1.setIcon(check);
+        } else{
+             lblNombre1.setIcon(noCheck);       
+        }
+    }//GEN-LAST:event_txtDireccionRestorantFocusLost
+
+    private void txtHoraAperturaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraAperturaFocusLost
+        if(!txtHoraApertura.getText().equals("")){
+            lblNombre2.setIcon(check);
+        } else{
+             lblNombre2.setIcon(noCheck);       
+        }
+          
+    }//GEN-LAST:event_txtHoraAperturaFocusLost
+
+    private void txtHoraCierreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraCierreFocusLost
+        if(!txtHoraCierre.getText().equals("")){
+            lblNombre3.setIcon(check);
+        } else{
+             lblNombre3.setIcon(noCheck);       
+        }
+    }//GEN-LAST:event_txtHoraCierreFocusLost
+
+    private void txtIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusLost
+        if(!txtID.getText().equals("")){
+            lblNombre4.setIcon(check);
+        } else{
+             lblNombre4.setIcon(noCheck);       
+        }
+    }//GEN-LAST:event_txtIDFocusLost
+                                   
+       
+        
+       
+   public void  mostrarMatriz()
 {
  String matriz[][]= new String[modelo.getListaRestoranes().size()][6];
 for(int i=0;i <modelo.getListaRestoranes().size();i++){
@@ -843,9 +953,12 @@ return ok;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lblNombre2;
+    private javax.swing.JLabel lblNombre3;
+    private javax.swing.JLabel lblNombre4;
     private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelFichaRestorant;
-    private javax.swing.JPanel panelTextos;
     private javax.swing.JTable tablaRestorant;
     private javax.swing.JTextField txtDireccionRestorant;
     private javax.swing.JTextField txtEditarDireccion;
