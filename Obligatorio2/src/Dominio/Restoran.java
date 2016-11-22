@@ -9,25 +9,31 @@ public class Restoran extends Sistema{
     private int apertura;
     private int cierre;
     private String comida;
-    private int promedio;
-    private int id;
+    private int idRestoran;
 
     
 
-    public Restoran(int idRestorant,String nombre, String direccion, int apertura, int cierre, String comida) {
-        this.id = modificarIdRestoran();
+    public Restoran(int id,String nombre, String direccion, int apertura, int cierre, String comida) {
+        this.idRestoran = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.apertura = apertura;
         this.cierre = cierre;
         this.comida = comida;
-        this.promedio = 0;
+       
         
         
         
     }
 
     public Restoran() {
+        this.idRestoran = 0;
+        this.nombre = "";
+        this.direccion = "";
+        this.apertura = 0;
+        this.cierre = 0;
+        this.comida = "";
+        
     }
 
     public String getNombre() {
@@ -41,12 +47,12 @@ public class Restoran extends Sistema{
     public String getDireccion() {
         return direccion;
     }
- public int getIdRestorant() {
-        return id;
+    public int getIdRestorant() {
+        return idRestoran;
     }
 
     public void setIdRestorant(int idRestorant) {
-        this.id = idRestorant;
+        this.idRestoran = idRestorant;
     }
     public void setDireccion(String direccion) {
         this.direccion = direccion;
@@ -76,21 +82,6 @@ public class Restoran extends Sistema{
         this.comida = comida;
     }
 
-    public int getPromedio() {
-        return promedio;
-    }
-
-    public void setPromedio(int promedio) {
-        this.promedio = promedio;
-    }
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId( int id) {
-        this.id = id;
-    }
     
     
 }

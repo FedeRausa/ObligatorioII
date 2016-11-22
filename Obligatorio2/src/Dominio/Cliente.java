@@ -14,6 +14,9 @@ public class Cliente {
     }
 
     public Cliente() {
+        this.nombre = "";
+        this.edad = 0;
+        this.mail = "";
     }
     
     //Geters y seters**//

@@ -6,16 +6,22 @@ public class Evaluacion {
     private int estrellas;
     private String reseña;
     private Cliente usuario;
+    private Restoran res;
 
     //**Constructores**//
     
-    public Evaluacion(int estrellas, String reseña, Cliente usuario) {
+    public Evaluacion(int estrellas, String reseña, Cliente usuario, Restoran res) {
         this.estrellas = estrellas;
         this.reseña = reseña;
         this.usuario = usuario;
+        this.res = res;
     }
     
     public Evaluacion() {
+        this.estrellas = 0;
+        this.reseña = "";
+        this.usuario = null;
+        this.res = null;
     }
     
     //**Geters y seters**//

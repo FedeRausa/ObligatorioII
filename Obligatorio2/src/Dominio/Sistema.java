@@ -21,11 +21,13 @@ public class Sistema {
     private ArrayList<Restoran> listaRestoranes;
     private ArrayList<Evaluacion> listaEvaluaciones;
     private ArrayList<String> listaComidas;
+    
     private int idRestoran;
    
     //***Constructor**//
     
     public Sistema(){
+       
        listaRestoranes = new ArrayList<Restoran>();
        listaComidas = new ArrayList<String>();
        listaClientes = new ArrayList<Cliente>();
@@ -99,6 +101,36 @@ public class Sistema {
     public int modificarIdRestoran(){
         this.idRestoran++;
         return idRestoran;
+    }
+    
+     public void Ganadores(int cantGanadores, Sorteo sor){
+       int[] indices = new int [cantGanadores];
+       ArrayList<Cliente> ganadores;
+       
+       while (cantGanadores > 0){
+           int valorEntero = (int) Math.floor(Math.random()*(20-1+1)+1);
+           if (!Contiene(indices,valorEntero)){
+               indices[cantGanadores]= valorEntero;
+           }
+           cantGanadores--;
+       }
+       
+       for (int k = 0; k <indices.length; k++){
+           Cliente aux = this.getListaClientes().get(k);
+           sor.getListaGanadores().add(aux);
+       }
+      
+    return ;  
+    }
+   
+    public boolean Contiene(int[] array, int dato){
+            for(int j = 0; j < array.length ; j++){
+                if(array[j] == dato){
+                    return true;
+                }
+            }
+            
+            return false;
     }
     
     
